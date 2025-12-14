@@ -1,0 +1,8 @@
+config BR2_PACKAGE_LIBCACA
+	bool "libcaca"
+	depends on BR2_USE_WCHAR # libcaca uses wide characters
+	select BR2_PACKAGE_NCURSES # For terminal output
+	help
+	  Colour ASCII Art library.
+
+	  http://caca.zoy.org/wiki/libcaca

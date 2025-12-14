@@ -1,0 +1,9 @@
+config BR2_PACKAGE_TOILET
+	bool "toilet"
+	select BR2_PACKAGE_LIBCACA # toilet depends on libcaca
+	help
+	  TOIlet (The Other Implementation's Letters) is a free replacement
+	  for FIGlet. It prints text using large characters made of smaller
+	  characters.
+
+	  http://caca.zoy.org/wiki/toilet

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_HELLOWORLD_GO
+	bool "helloworld_go"
+	help
+	  A simple go hello world program.

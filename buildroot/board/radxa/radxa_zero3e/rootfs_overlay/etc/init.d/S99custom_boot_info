@@ -1,0 +1,45 @@
+#!/bin/sh
+
+case "$1" in
+start)
+	printf "Starting custom boot info...\n"
+	# Read OS name
+	OS_NAME=""
+	if [ -f /etc/os-release ]; then
+		. /etc/os-release
+	fi
+
+	# Display custom banner using toilet
+	if command -v toilet >/dev/null 2>&1; then
+		toilet -f smmono12 -F border "${OS_NAME}"
+	else
+		printf "\n%s\n\n" "${OS_NAME}"
+	fi
+
+	# Display firmware, kernel, and U-boot versions
+	printf "--------------------------------------------------\n"
+	printf "Firmware Version: "
+	if [ -f /etc/firmware-version ]; then
+		cat /etc/firmware-version
+	else
+		printf "N/A\n"
+	fi
+	printf "Linux Kernel Version: $(uname -r)\n"
+	printf "U-boot Version: "
+	if [ -f /etc/uboot-version ]; then
+		cat /etc/uboot-version
+	else
+		printf "N/A\n"
+	fi
+	printf "--------------------------------------------------\n"
+	;;
+stop)
+	printf "Stopping custom boot info...\n"
+	;;
+*)
+	echo "Usage: $0 {start|stop}"
+	exit 1
+	;;
+esac
+
+exit 0

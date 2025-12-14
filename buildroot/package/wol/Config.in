@@ -1,0 +1,4 @@
+config BR2_PACKAGE_WOL
+	bool "wol"
+	help
+	  A small utility to send Wake-On-LAN packets.

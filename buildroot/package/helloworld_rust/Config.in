@@ -1,0 +1,4 @@
+config BR2_PACKAGE_HELLOWORLD_RUST
+	bool "helloworld_rust"
+	help
+	  A simple Rust hello world program.

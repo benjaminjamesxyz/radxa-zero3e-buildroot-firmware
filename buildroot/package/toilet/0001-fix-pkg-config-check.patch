@@ -1,0 +1,15 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,12 +19,6 @@
+ AC_EGREP_CPP(yes, foo)
+ PKG_PROG_PKG_CONFIG()
+ 
+-dnl Don't let pkg-config fuck our cross-compilation environment
+-m4_pattern_allow([^PKG_CONFIG_LIBDIR$])
+-if test "$build" != "$host" -a "${PKG_CONFIG_LIBDIR}" = ""; then
+-  export PKG_CONFIG_LIBDIR=/dev/null
+-fi
+-
+ AC_CHECK_HEADERS(sys/ioctl.h)
+ 
+ AC_CACHE_CHECK([for TIOCGWINSZ],

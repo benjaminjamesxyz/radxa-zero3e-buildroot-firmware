@@ -1,0 +1,1 @@
+radxa -1 radxa -1 $6$dlm6LAtIHd46C0TW$I1.FmTjWyvXrtvPkUGX9nKcHk.ox.rF8rtO/xnBdlMwGjsp6EHwbdBpHf35tXxIpbg2M7Hmlw1OXqMbVGM0qF/ /home/radxa /bin/sh sudo,audio,video Radxa User

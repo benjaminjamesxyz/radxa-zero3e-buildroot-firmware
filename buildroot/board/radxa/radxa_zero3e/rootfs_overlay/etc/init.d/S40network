@@ -1,0 +1,37 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    printf "Starting network: "
+    # Bring the eth0 link up
+    /sbin/ip link set eth0 up
+
+    # Run the DHCP client in the background (-b) on eth0
+    # You may need to add -R (release lease) or adjust client options
+    /sbin/udhcpc -i eth0 -b -p /var/run/udhcpc.eth0.pid -x hostname:radxa_zero_3e
+
+    [ $? -eq 0 ] && echo "OK" || echo "FAIL"
+    ;;
+
+  stop)
+    printf "Stopping network: "
+    # Kill the background DHCP process
+    kill `cat /var/run/udhcpc.eth0.pid`
+
+    # Bring the eth0 link down
+    /sbin/ip link set eth0 down
+
+    [ $? -eq 0 ] && echo "OK" || echo "FAIL"
+    ;;
+
+  restart|reload)
+    "$0" stop
+    "$0" start
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit 0

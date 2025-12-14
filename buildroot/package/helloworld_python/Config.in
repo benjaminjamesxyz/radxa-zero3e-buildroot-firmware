@@ -1,0 +1,4 @@
+config BR2_PACKAGE_HELLOWORLD_PYTHON
+	bool "helloworld_python"
+	help
+	  A simple python hello world program.

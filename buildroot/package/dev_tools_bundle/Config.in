@@ -1,0 +1,28 @@
+config BR2_PACKAGE_DEV_TOOLS_BUNDLE
+	bool "dev-tools-bundle"
+	select BR2_PACKAGE_GDB
+	select BR2_PACKAGE_GDB_SERVER
+	select BR2_PACKAGE_GDB_DEBUGGER
+	select BR2_PACKAGE_STRACE
+	select BR2_PACKAGE_VALGRIND if BR2_PACKAGE_VALGRIND_ARCH_SUPPORTS
+	select BR2_PACKAGE_LINUX_TOOLS
+	select BR2_PACKAGE_LINUX_TOOLS_PERF
+	select BR2_PACKAGE_HTOP
+	select BR2_PACKAGE_MEMSTAT
+	select BR2_PACKAGE_LTTNG_TOOLS if !BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_LTTNG_LIBUST if !BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_LIBURCU
+	select BR2_TOOLCHAIN_HAS_THREADS
+	select BR2_TOOLCHAIN_HAS_THREADS_DEBUG
+	select BR2_PACKAGE_GDB_ARCH_SUPPORTS
+	select BR2_TOOLCHAIN_GCC_AT_LEAST_4_8
+	select BR2_INSTALL_LIBSTDCPP
+	help
+	  Enables a suite of development and debugging tools including:
+	  - GDB (Server and Debugger)
+	  - Strace
+	  - Valgrind (Memory Analysis)
+	  - Perf (Linux Tools)
+	  - Htop
+	  - Memstat
+	  - LTTng (userspace tracing)

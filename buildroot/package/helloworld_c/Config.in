@@ -1,0 +1,4 @@
+config BR2_PACKAGE_HELLOWORLD_C
+	bool "helloworld_c"
+	help
+	  A simple C hello world program.

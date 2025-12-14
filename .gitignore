@@ -1,0 +1,21 @@
+# Buildroot output directories
+/buildroot/output/
+/buildroot/dl/
+
+# Buildroot configuration files
+/buildroot/.config
+/buildroot/.config.old
+/buildroot/local.mk
+
+# Generic build artifacts
+*.o
+*.a
+*.so
+*.lo
+*.la
+*.pyc
+*.pyo
+*.swp
+
+# Log files
+*.log
