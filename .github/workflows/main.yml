@@ -1,0 +1,60 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required for creating releases
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          chmod +x scripts/setup.sh
+          ./scripts/setup.sh
+
+      - name: Restore Buildroot DL cache
+        id: cache-dl
+        uses: actions/cache@v4
+        with:
+          path: buildroot/dl
+          key: ${{ runner.os }}-buildroot-dl-${{ hashFiles('buildroot/configs/radxa_zero3e_defconfig') }}
+          restore-keys: |
+            ${{ runner.os }}-buildroot-dl-
+
+      - name: Build Firmware
+        run: |
+          chmod +x scripts/build.sh
+          ./scripts/build.sh
+
+      - name: Compress Artifact
+        run: |
+          cd buildroot/output/images
+          gzip -k sdcard.img
+          echo "ARTIFACT_PATH=buildroot/output/images/sdcard.img.gz" >> $GITHUB_ENV
+
+      - name: Generate Release Tag
+        id: tag
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          DATE=$(date +'%Y%m%d')
+          TAG_NAME="build-${DATE}-${SHORT_SHA}"
+          echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag_name }}
+          name: Release ${{ steps.tag.outputs.tag_name }}
+          body: ${{ github.event.head_commit.message }}
+          files: ${{ env.ARTIFACT_PATH }}
+          draft: false
+          prerelease: false
