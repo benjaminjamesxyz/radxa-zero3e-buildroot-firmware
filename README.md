@@ -2,14 +2,14 @@
 
 Welcome! This repository provides a complete, "batteries-included" environment for building a custom, highly optimized Linux **firmware** specifically for the **Radxa Zero 3E** (Rockchip RK3566) single-board computer.
 
-This is a dedicated **build system** tailored for **embedded applications**, focusing on minimal footprint and efficient resource usage. We've leveraged **Buildroot 2025.02** to set up a modern kernel (v6.17) and toolchain, freeing you to concentrate on your embedded application logic without wrestling with complex cross-compilation setups. This system is also pre-configured with various debug and development tools to aid your embedded journey.
+This is a dedicated **build system** tailored for **embedded applications**, focusing on minimal footprint and efficient resource usage. We've leveraged **Buildroot 2025.02** to set up a modern kernel (v6.18.1) and toolchain, freeing you to concentrate on your embedded application logic without wrestling with complex cross-compilation setups. This system is also pre-configured with various debug and development tools to aid your embedded journey.
 
 It comes pre-configured with robust support for **Python, C, C++, Go, and Rust**, alongside handy helper scripts to make building and flashing your custom firmware a seamless experience.
 
 ## 🌟 What's Inside?
 
 *   **Target Hardware:** Radxa Zero 3E (Cortex-A55, AArch64).
-*   **Modern Core:** Produces firmware running Linux 6.17.11 and U-Boot 2025.10.
+*   **Modern Core:** Produces firmware running Linux 6.18.1 and U-Boot 2025.10.
 *   **Developer Friendly:** Build tools configured for Python 3, C/C++, Go, and Rust development.
 *   **Smart Partitioning:**
     *   **Rootfs:** 500MB Ext4 (optimized for embedded use).
