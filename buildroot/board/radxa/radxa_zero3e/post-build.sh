@@ -14,7 +14,7 @@ OVERLAY_DIR="${BOARD_DIR}/rootfs_overlay"
 # This is a bit tricky to get dynamically, so for now, we'll use the known LTS version
 BUILDROOT_VERSION="2025.02.9"
 UBOOT_VERSION="2025.10"
-LINUX_VERSION="6.18.1"
+LINUX_VERSION="6.18.3"
 
 echo "${BUILDROOT_VERSION}" >"${TARGET_DIR}/etc/firmware-version"
 echo "${UBOOT_VERSION}" >"${TARGET_DIR}/etc/uboot-version"
